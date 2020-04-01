@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 df = pd.read_excel('dataset/Data_Train.xlsx')
+df = pd.read_csv('dataset/creditcard.csv')
 
 df = df.replace({'RATING':['NEW','-']},'0')
 df['RATING'] = df['RATING'].astype('float')
@@ -56,6 +57,7 @@ cumsum = df['COST'].cumsum()
 
 ## groupby sum,mean, count
 avg = df.groupby('TITLE').mean()
+avg = df.groupby('TITLE')['COST'].mean()
 summ = df.groupby('TITLE').sum()
 minn = df.groupby('TITLE').min()
 count = df.groupby('TITLE').count()
@@ -79,3 +81,80 @@ sns.lineplot(x='months',y='COST',data=df, estimator=np.median)
 sns.barplot(x="COST", y="CITY", data=df, estimator=np.median)
 table=pd.crosstab(df["CUISINES"], df['TITLE'])
 table.plot(kind='barh',stacked=True)
+
+import numpy as np
+import random
+x = [1,2,3,4,5,2]
+y=tuple(x)
+z=list(y)
+z=set(x)
+x.count(3)
+['a' if i==2 else i for i in x]
+np.array([1,2])
+x[::-1]
+y=z.add('a')
+
+y=z.copy()
+z.difference(set(x))
+random.randint(1,7)
+x*2
+def summ(n):
+    n = str(n)
+    a = [int(i) for i in list(n)]
+    b = sum(a)
+    return b
+
+def rev(n):
+    n = str(n)
+    a = [i for i in list(n)]
+    a = a[::-1]
+    b = ''.join(a)
+    b = int(b)
+    return b
+
+def check(n):
+    n = str(n)
+    a = [i for i in list(n)]
+    b = a[::-1]
+    if a == b:
+        output = 'palindrome'
+    else:
+        output = 'No'
+    return output
+
+def count(n):
+    n = str(n)
+    a = [i for i in list(n)]
+    b = len(a)
+    return b
+
+def second_large(a):
+    a.sort()
+    b= a[-2]
+    return b
+
+def swap(a):
+    temp = a[0]
+    a[0] = a[-1]
+    a[-1] = temp
+    return a
+
+def check_prime(n):
+    for i in range(2,n):
+        if n%i == 0:
+            return 'No'
+        else:
+            return 'Prime'
+
+
+
+
+
+
+
+
+
+
+
+
+
